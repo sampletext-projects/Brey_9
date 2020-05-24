@@ -3,15 +3,19 @@
 
 using namespace std;
 
+#define N 10
+#define M 10
+
 bool is_symmetrical(int* matr, int n, int m)
 {
 	if (n != m) return false;
 
-	for (int i = 0; i < n / 2; i++)
+	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < m / 2; j++)
+		for (int j = 0; j < m; j++)
 		{
-			if (matr[i * m + j] != matr[j * m + i])
+			if (i == j) continue;
+			if (matr[i * N + j] != matr[j * N + i])
 			{
 				return false;
 			}
@@ -28,7 +32,7 @@ int main()
 	cout << "Программа для работы с матрицей\n";
 
 	int n, m;
-	int matr[10][10];
+	int matr[N][M];
 
 	cout << "Введите количество строк: ";
 	cin >> n;
@@ -40,6 +44,7 @@ int main()
 		cout << "Введённый размер больше допустимого (10)\n";
 		return 0;
 	}
+
 	if (n < 0 || m < 0)
 	{
 		cout << "Введённый размер не может быть отрицательным\n";
